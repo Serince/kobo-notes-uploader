@@ -1,5 +1,5 @@
 
-screenshot_path="/mnt/onboard/"
+notes_path="/mnt/onboard/"
 
 SCRIPT=$(readlink -f $0)
 
@@ -28,13 +28,13 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
     else
 
 
-        files=$(/usr/bin/find $screenshot_path -maxdepth 1 -type f -name "*.png")
+        files=$(/usr/bin/find $notes_path -maxdepth 1 -type f -name "*.txt")
 
         if [ -z "${files}" ];
 
             then
 
-                echo "No screenshot found, sorry."
+                echo "No notes found, sorry."
 
             else
 
@@ -54,7 +54,7 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
 
                             #./bin/rm $i
                             qndb -m wfmSetAirplaneMode --disable
-                            qndb -m mwcToast 3000 "Screenshots successfully sent. Wi-Fi turned off."
+                            qndb -m mwcToast 3000 "Notes and highlights successfully sent. Wi-Fi turned off."
                     fi
 
                 done
