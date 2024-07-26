@@ -10,11 +10,11 @@ This script **NEEDS**  [NickelMenu](https://github.com/pgaskin/NickelMenu) to wo
 
 3. Copy and paste  the TOKEN in 
 
-   ```.adds/screenshot-upload/telegram.config```
+   ```.adds/notes-upload/telegram.config```
 	
 4. Copy and paste your Telegram Chat ID (you can get it with [this bot](https://t.me/getmyid_bot)) in
 
-   ```.adds/screenshot-upload/telegram.config```
+   ```.adds/notes-upload/telegram.config```
 	
 5.Set the highlight export options by following steps:
     * connect kobo to your device
