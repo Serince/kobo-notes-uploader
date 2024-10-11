@@ -1,5 +1,5 @@
-
-notes_path="/mnt/onboard/"
+foldername= ${FOLDER_NAME}
+notes_path="/mnt/onboard/$foldername"
 
 SCRIPT=$(readlink -f $0)
 
