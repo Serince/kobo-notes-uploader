@@ -42,9 +42,9 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
 
 
                 do
+                    textmessage="cat i"
 
-
-                    if $SCRIPTPATH/curl -k https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendPhoto -F chat_id=$CHAT_ID -F photo=@$i | grep -q 'error';
+                    if $SCRIPTPATH/curl -k https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage -F chat_id=$CHAT_ID -F text=@$textmessage | grep -q 'error';
 
                         then
 
