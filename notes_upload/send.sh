@@ -1,5 +1,4 @@
-foldername= ${FOLDER_NAME}
-notes_path="/mnt/onboard/$foldername"
+notes_path="/mnt/onboard/"
 
 SCRIPT=$(readlink -f $0)
 
@@ -16,8 +15,9 @@ if [ -z "${TELEGRAM_BOT_TOKEN}" ] ||  [ -z "${CHAT_ID}" ];
 
 fi
 
-qndb -t 5000 -m wfmConnectWirelessSilently
-
+qndb -t 6000 -m wfmConnectWirelessSilently
+OIFS="$IFS"
+IFS=$'\n'
 if ! [ "$(ping -c1 8.8.8.8)" ]
 
     then
@@ -28,7 +28,7 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
     else
 
 
-        files=$(/usr/bin/find $notes_path -maxdepth 1 -type f -name "*.txt")
+        files=$(/usr/bin/find $notes_path -maxdepth 2 -type f -name "*.txt")
 
         if [ -z "${files}" ];
 
@@ -42,7 +42,7 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
 
 
                 do
-                    textmessage="cat $i"
+                    textmessage="$(cat $i)"
 
                     if $SCRIPTPATH/curl -k https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage -F chat_id=$CHAT_ID -F text=$textmessage | grep -q 'error';
 
@@ -63,3 +63,4 @@ if ! [ "$(ping -c1 8.8.8.8)" ]
 
 
 fi
+IFS="$OIFS"
